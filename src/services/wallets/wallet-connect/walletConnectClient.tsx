@@ -44,7 +44,7 @@ export default class WalletConnectClient implements walletConnectClient{
 
         this.connector = new DAppConnector(
             appMetadata,
-            LedgerId.fromString(network),
+            LedgerId.fromString(network.toLowerCase()),
             process.env.NEXT_PUBLIC_PROJECT_ID || "",
             Object.values(HederaJsonRpcMethod),
             [HederaSessionEvent.ChainChanged, HederaSessionEvent.AccountsChanged],
