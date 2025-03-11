@@ -2,7 +2,6 @@
 
 import { create } from "zustand";
 
-// Definir el tipo para el estado del store
 type WalletState = {
   isConnected: boolean;
   accountId: string | null;
@@ -10,7 +9,6 @@ type WalletState = {
   disconnect: () => void;
 };
 
-// Crear el store con tipos
 export const useWalletState = create<WalletState>((set) => ({
   isConnected: false,
   accountId: null,
