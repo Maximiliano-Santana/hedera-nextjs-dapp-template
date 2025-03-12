@@ -4,18 +4,18 @@ import { LedgerId, PublicKey, Transaction, TransactionResponse } from "@hashgrap
 import { useWalletState } from "@/services/walletState";
 import { SessionTypes, SignClientTypes } from "@walletconnect/types";
 
-interface walletConnectClient{
+interface IWalletConnectClient{
     connector: DAppConnector | undefined;
     session: SessionTypes.Struct | undefined;
     connect: () => Promise<void>;
     disconnect: () => Promise<void>;
-    getSigner?: () => DAppSigner;
-    getAccountId?: () => string;
-    getPublicKey?: () => PublicKey;
-    signTransaction?: <T extends Transaction>(tx: T) => Promise<string | null>;
+    getSigner: () => DAppSigner;
+    getAccountId: () => string;
+    getPublicKey: () => PublicKey;
+    signTransaction: <T extends Transaction>(tx: T) => Promise<string | null>;
 }
 
-export default class WalletConnectClient implements walletConnectClient{
+export default class WalletConnectClient implements IWalletConnectClient{
     private static instance: WalletConnectClient
     connector: DAppConnector | undefined;
     session: SessionTypes.Struct | undefined;
