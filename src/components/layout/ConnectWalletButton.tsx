@@ -3,13 +3,13 @@
 import { useWalletState } from "@/services/walletState";
 import Button from "../ui/buttons/Button";
 import { useEffect } from "react";
-import WalletConnectClient from "@/services/wallets/wallet-connect/walletConnectClient";
+import { WalletInterface } from "@/services/wallets/WalletInterface";
 
 export default function ConnectWalletButton(){
     const { isConnected, accountId } = useWalletState();
     
     const toggleConnectWallet = async ()=>{
-        const wallet = await WalletConnectClient.getInstance();
+        const wallet = await WalletInterface.useWallet();
 
         if(isConnected){
             wallet.disconnect();
