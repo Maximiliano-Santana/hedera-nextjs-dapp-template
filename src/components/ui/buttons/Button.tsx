@@ -3,32 +3,38 @@
 import React from "react";
 
 type ButtonProps = {
-    variant?: "default" | "primary" | "secondary"; // Estilo del botón (primary, secondary, etc.)
-    onClick?: () => void; // Función para manejar clics
-    className?: string; // Clases adicionales para personalización
-    children?: React.ReactNode; // Contenido del botón
-    // Otros atributos como type, disabled, etc.
+  variant?: "default" | "primary" | "secondary"; 
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  className?: string;
+  children?: React.ReactNode;
 };
 
-function Button({ 
-  variant = "default", // Estilo del botón (primary, secondary, etc.)
-  onClick, // Función para manejar clics
-  className = "", // Clases adicionales para personalización
-  children, // Contenido del botón
-  ...props // Otros atributos como type, disabled, etc.
+
+function Button({
+  variant = "default",
+  onClick,
+  className = "",
+  children,
+  ...props
 }: ButtonProps) {
-  // Define los estilos según la variante
   const variants = {
     default: "bg-white text-black font-black rounded-lg p-2 hover:bg-black hover:text-white transition-all cursor-pointer",
     primary: "bg-white text-black font-black rounded-lg p-2 hover:bg-black hover:text-white transition-all cursor-pointer",
     secondary: "bg-white text-black font-black rounded-lg p-2 hover:bg-black hover:text-white transition-all cursor-pointer",
   };
 
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    event.preventDefault();
+    if (onClick) {
+      onClick(event);
+    }
+  };
+
   return (
     <button
       className={`${variants[variant]} ${className} `}
-      onClick={onClick}
-      {...props} // Pasa otros atributos al botón
+      onClick={handleClick}
+      {...props}
     >
       {children}
     </button>

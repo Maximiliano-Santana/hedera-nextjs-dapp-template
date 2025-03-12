@@ -1,6 +1,6 @@
 'use client'
 
-import { useWalletState } from "@/services/walletState";
+import { useWalletState } from "@/services/wallets/walletState";
 import Button from "../ui/buttons/Button";
 import { useEffect } from "react";
 import { WalletInterface } from "@/services/wallets/WalletInterface";
@@ -18,10 +18,6 @@ export default function ConnectWalletButton(){
         }
 
     }
-
-    useEffect(()=>{
-        console.log(isConnected);
-    }, [isConnected])
 
     return <>
         <Button onClick={toggleConnectWallet}>

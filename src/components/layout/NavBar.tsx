@@ -11,9 +11,6 @@ export default function NavBar(){
                 <NavbarItem path="/">
                     Home
                 </NavbarItem>
-                <NavbarItem path="/Mint">
-                    Mint
-                </NavbarItem>
                 <ConnectWalletButton/>
             </ul>
         </nav>

@@ -1,7 +1,7 @@
 import { DAppConnector, DAppSigner } from "@hashgraph/hedera-wallet-connect";
 import { HederaSessionEvent, HederaChainId, HederaJsonRpcMethod } from "@hashgraph/hedera-wallet-connect";
 import { LedgerId, PublicKey, Transaction, TransactionResponse } from "@hashgraph/sdk";
-import { useWalletState } from "@/services/walletState";
+import { useWalletState } from "@/services/wallets/walletState";
 import { SessionTypes, SignClientTypes } from "@walletconnect/types";
 
 interface IWalletConnectClient{
@@ -117,6 +117,7 @@ export default class WalletConnectClient implements IWalletConnectClient{
         const signer: DAppSigner = this.getSigner();
         await tx.freezeWithSigner(signer);
         const txResult: TransactionResponse = await tx.executeWithSigner(signer);
-        return txResult ? txResult.transactionId.toString() : null;
+        const txId : string | null = txResult ? txResult.transactionId.toString() : null;
+        return txId;
     }
 }
