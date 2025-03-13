@@ -44,7 +44,7 @@ export default class WalletConnectClient implements IWalletConnectClient{
         this.connector = new DAppConnector(
             appMetadata,
             LedgerId.fromString(network.toLowerCase()),
-            process.env.NEXT_PUBLIC_PROJECT_ID || "",
+            process.env.NEXT_PUBLIC_WC_PROJECT_ID || "",
             Object.values(HederaJsonRpcMethod),
             [HederaSessionEvent.ChainChanged, HederaSessionEvent.AccountsChanged],
             [HederaChainId[network as keyof typeof HederaChainId]]

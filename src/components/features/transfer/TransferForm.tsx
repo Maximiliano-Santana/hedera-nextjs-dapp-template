@@ -26,10 +26,8 @@ export default function TransferForm(){
         console.log(txId);
 
         if(txId){
-            alert("Tranfer completed: " + txId)
+            alert("Transfer completed: " + txId)
         }
-
-
     }
 
     useEffect(()=>{
