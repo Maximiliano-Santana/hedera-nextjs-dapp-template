@@ -3,24 +3,16 @@ import { HederaSessionEvent, HederaChainId, HederaJsonRpcMethod } from "@hashgra
 import { LedgerId, PublicKey, Transaction, TransactionResponse } from "@hashgraph/sdk";
 import { useWalletState } from "@/services/wallets/walletState";
 import { SessionTypes, SignClientTypes } from "@walletconnect/types";
+import { WalletClient } from "../WalletClient";
 
-interface IWalletConnectClient{
-    connector: DAppConnector | undefined;
-    session: SessionTypes.Struct | undefined;
-    connect: () => Promise<void>;
-    disconnect: () => Promise<void>;
-    getSigner: () => DAppSigner;
-    getAccountId: () => string;
-    getPublicKey: () => PublicKey;
-    signTransaction: <T extends Transaction>(tx: T) => Promise<string | null>;
-}
-
-export default class WalletConnectClient implements IWalletConnectClient{
+export default class WalletConnectClient extends WalletClient{
     private static instance: WalletConnectClient
     connector: DAppConnector | undefined;
     session: SessionTypes.Struct | undefined;
 
-    constructor(){}
+    constructor(){
+        super()
+    }
 
     static async getInstance(): Promise<WalletConnectClient> {
         if (!WalletConnectClient.instance) {
