@@ -33,6 +33,21 @@ export default function RootLayout({
           <div className="pt-24 h-screen">
             {children}
           </div>
+          <footer className="absolute bottom-0 w-full flex flex-col items-center justify-center p-4 text-sm text-gray-500 bg-gray-900">
+            <p>© {new Date().getFullYear()} MichiMint - Built with ❤️ for the Hedera Ecosystem</p>
+            <p>
+              Open-source under the{" "}
+              <a href="https://opensource.org/licenses/MIT" className="underline hover:text-gray-300">
+                MIT License
+              </a>
+            </p>
+            <p>
+              Developed by{" "}
+              <a href="https://github.com/Maximiliano-Santana" className="underline hover:text-gray-300">
+                Maximiliano
+              </a>
+            </p>
+          </footer>
       </body>
     </html>
   );
